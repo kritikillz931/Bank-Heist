@@ -9,7 +9,3 @@
     width: 300px;
     cursor: pointer;
 }
-
-.bankImg::active {
-border: 1px solid red;
-}
