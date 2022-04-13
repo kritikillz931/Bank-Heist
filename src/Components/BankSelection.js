@@ -29,7 +29,7 @@ export const BankSelection = () => {
     return (
         <>
         <div>
-            <h3>PICK A BANK</h3>
+            <h3>PICK YOUR BANK</h3>
         </div>
         <div className="imageContainer">
             {banks.map((bank) => {
