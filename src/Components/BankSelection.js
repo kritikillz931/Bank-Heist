@@ -1,46 +1,61 @@
-import React from "react";
-import Bank1 from "../Images/Bank1.png"
-import Bank2 from "../Images/Bank2.png"
-import Bank3 from "../Images/Bank3.png"
+import React, { useDebugValue, useEffect, useState } from "react";
+
 import "../Components/BankSelection.css"
+import { banks } from "./BankDetails";
 
 export const BankSelection = () => {
-    let bank1 = {
-        img: Bank1,
-        difficulty: Math.floor(Math.random(1) * 10 + 1)
-    }
-    let bank2 = {
-        img: Bank2,
-        difficulty: Math.floor(Math.random(1) * 10 + 1)
-    }
-    let bank3 = {
-        img: Bank3,
-        difficulty: Math.floor(Math.random() * 10 + 1)
-    }
+    const [bankChecked, setBankChecked] = useState({})
+    const [heistBudget, setHeistBudget] = useState(0)
 
-    let banks = [bank1, bank2, bank3]
-
-    const handleBankSelection = (bank) => {
-        console.log(bank)
-        sessionStorage.setItem("bankDifficulty", bank.difficulty)
-        sessionStorage.setItem("bankImg", bank.img)
+    useEffect(() => {
         
+    }, [])
+
+    console.log(bankChecked)
+
+    const handleInputChange = (event) => {
+
+        const selection = { ...bankChecked }
+        selection[event.target.name] = event.target.value
+        setBankChecked(selection)
+        if (bankChecked.bankSelection >= 1 && bankChecked.bankSelection <= 4) {
+            selection["heistBudget"] = Math.round(Math.random() * (50000 - 30000) + 30000)
+        }
+        else if (bankChecked.bankSelection >= 5 && bankChecked.bankSelection <= 7) {
+            selection["heistBudget"] = Math.round(Math.random() * (100000 - 70000) + 70000)
+        }
+        else if (bankChecked.bankSelection >= 8 && bankChecked.bankSelection <= 10) {
+            selection["heistBudget"] = Math.round(Math.random() * (150000 - 80000) + 80000)
+        }
+        console.log(selection)
     }
+    
+
+
+
     return (
         <>
-        <div>
-            <h3>PICK YOUR BANK</h3>
-        </div>
-        <div className="imageContainer">
-            {banks.map((bank) => {
-                return (
-                    <div >
-                        <img onClick={() => handleBankSelection(bank)} className="bankImg" src={bank.img}/>
-                        <h6>Bank Difficulty: {bank.difficulty}</h6>
-                    </div>
-                )
-            })}
-        </div>
-            </>
+            <div>
+                <h3>PICK YOUR BANK</h3>
+            </div>
+                <div>Heist Budget: ${bankChecked.heistBudget}</div>
+            <div className="imageContainer">
+                {banks.map((bank) => {
+
+                    return (
+                        <>
+                        <div>
+                            <img className="bankImg" src={bank.img} />
+                            <div className="bankDetails">
+                                <h6>
+                                    Bank Difficulty: {bank.difficulty}</h6>
+                            </div>
+                            <input name="bankSelection" value={bank.difficulty} onChange={handleInputChange} type="radio" />
+                        </div>
+                        </>
+                    )
+                })}
+            </div>
+        </>
     )
 }
