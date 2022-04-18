@@ -1,27 +1,22 @@
-
-
-.crewContainer {
+.equipmentContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.crewImages {
-    margin: 0;
-    padding: 10%;
+
+.equipmentImg {
+    width: 200px;
     cursor: pointer;
-    width: 80%;
     justify-content: center;
-    
 }
 
-.crewDetails {
+.equipmentDetails {
     text-align: center;
 }
 
-.crewCards {
-    width: 15%;
-    height: auto;
-    border-radius: 50%;
+.equipmentQuantity {
+    width: 100px;
+    text-align: center;
 }
