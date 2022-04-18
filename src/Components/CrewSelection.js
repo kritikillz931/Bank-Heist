@@ -5,7 +5,6 @@ import "./CrewSelection.css"
 
 export const CrewSelection = ({}) => {
 
-
     return (
         <>
             <h3>PICK YOUR CREW</h3>
