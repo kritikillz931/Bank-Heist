@@ -3,37 +3,34 @@ import { robberDetails } from "./CrewDetails"
 import { robberAvatar } from "./CrewDetails"
 import "./CrewSelection.css"
 
-export const CrewSelection = ({ }) => {
+
+export const CrewSelection = () => {
+
     let crew = []
+
     useEffect(() => {
 
     }, [crew])
 
     const handleInputChange = (event, robber) => {
-        
-        if(event.target.checked === true) {
+
+        if (event.target.checked === true) {
             crew.push(robber)
-        } 
-            if (event.target.checked === false) {
-                var i = 0
-                while(i < crew.length) {
-                    if(crew[i] === robber) {
-                        crew.splice(i, 1)
-                    } else {
-                        ++i
-                    }
-                } 
+        }
+        if (event.target.checked === false) {
+            var i = 0
+            while (i < crew.length) {
+                if (crew[i] === robber) {
+                    crew.splice(i, 1)
+                } else {
+                    ++i
+                }
             }
+        }
         console.log(crew)
     }
 
-    const handleOnClick = () => {
-        if(crew) {
-            let finalCrew = []
-            finalCrew.push(crew)
-            console.log(finalCrew)
-        }
-    }
+
 
     return (
         <>
@@ -56,7 +53,7 @@ export const CrewSelection = ({ }) => {
                                         <div>
                                             Cost To Hire: {robber.costToHire}
                                         </div>
-                                        <input onClick={handleOnClick} name="hiredCrew" value={robber.name} onChange={(e) => handleInputChange(e, robber)} type="checkbox"  />
+                                        <input name="hiredCrew" value={robber.name} onChange={(e) => handleInputChange(e, robber)} type="checkbox" />
                                     </div>
                                 </div>
                             </div>

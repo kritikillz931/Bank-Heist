@@ -7,6 +7,8 @@ export const BankSelection = () => {
     const [bankChecked, setBankChecked] = useState({})
     const [heistBudget, setHeistBudget] = useState({})
 
+    
+
     useEffect(() => {
 
     }, [heistBudget])
@@ -35,6 +37,7 @@ export const BankSelection = () => {
         setHeistBudget(localStorage.getItem("heistBudget"))
         console.log(selection)
     }
+
 
     return (
         <>
